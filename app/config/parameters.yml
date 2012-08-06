@@ -1,9 +1,9 @@
 parameters:
-    database_driver: pdo_mysql
+    database_driver: pdo_pgsql
     database_host: localhost
-    database_port: '3306'
+    database_port: '5432'
     database_name: tasks
-    database_user: root
+    database_user: postgres
     database_password: nbuser
     mailer_transport: smtp
     mailer_host: localhost

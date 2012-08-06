@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping
+    xmlns              = "http://doctrine-project.org/schemas/orm/doctrine-mapping"
+    xmlns:xsi          = "http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation = "http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Entvalley\AppBundle\Entity\User" table="entvalley_user">
+        <id name="id" type="integer">
+            <generator strategy="IDENTITY"/>
+        </id>
+
+        <many-to-one field="company" target-entity="Entvalley\AppBundle\Entity\Company" />
+    </entity>
+
+</doctrine-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          http://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="Entvalley\AppBundle\Entity\Task" table="entvalley_task" repository-class="Entvalley\AppBundle\Repository\TaskRepository">
+        <id name="id" type="integer">
+            <generator strategy="IDENTITY"/>
+        </id>
+
+        <field name="title" length="140" />
+        <field name="status" type="smallint" />
+        <field name="text" type="text" />
+        <field name="createdAt" type="datetime" />
+        <field name="lastModification" nullable="true" type="datetime" />
+
+        <many-to-one field="author" target-entity="Entvalley\AppBundle\Entity\User" />
+        <many-to-one field="assignedTo" target-entity="Entvalley\AppBundle\Entity\User" />
+
+    </entity>
+</doctrine-mapping>

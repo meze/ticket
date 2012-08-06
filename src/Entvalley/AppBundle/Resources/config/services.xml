@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="entvalley.user_factory" class="Entvalley\AppBundle\Factory\UserFactory">
+            <argument type="service" id="security.context" />
+        </service>
+
+        <service id="context.user" class="Entvalley\AppBundle\Entity\User"
+             factory-service="entvalley.user_factory"
+             factory-method="get">
+        </service>
+
+        <service id="entvalley.company_factory" class="Entvalley\AppBundle\Factory\CompanyFactory">
+            <argument type="service" id="context.user" />
+        </service>
+
+        <service id="context.company" class="Entvalley\AppBundle\Entity\Company"
+             factory-service="entvalley.company_factory"
+             factory-method="get">
+        </service>
+
+        <service id="entvalley.command_interpreter" class="Entvalley\AppBundle\Domain\Command\CommandInterpreter">
+            <argument>%entvalley.commands%</argument>
+        </service>
+
+        <service id="entvalley.command_manager" class="Entvalley\AppBundle\Domain\Command\CommandManager">
+            <argument type="service" id="entvalley.command_interpreter"/>
+            <argument>%entvalley.commands%</argument>
+        </service>
+    </services>
+
+</container>

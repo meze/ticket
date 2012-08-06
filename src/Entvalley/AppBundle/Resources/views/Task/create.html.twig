@@ -1,0 +1,15 @@
+{% extends 'EntvalleyAppBundle::layout.html.twig' %}
+
+{% block title 'Create a task | ' ~ parent() %}
+
+{% block content %}
+
+    <a class="btn" href="{{ path('app_task_list') }}">Back to task list</a>
+        <hr>
+
+    <form method="post" action="{{ path("app_task_create") }}">
+        {{ form_widget(form) }}
+        <input class="btn btn-primary" type="submit" value="Create" />
+    </form>
+
+{% endblock %}

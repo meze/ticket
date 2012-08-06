@@ -1,0 +1,29 @@
+{% extends 'EntvalleyAppBundle::layout.html.twig' %}
+
+{% block content %}
+
+    <a class="btn" href="{{ path('app_task_create') }}">Create a task</a>
+        <hr>
+
+    <ul class="separated-list">
+        {% for task in tasks %}
+            <li>
+                <div class="row-fluid">
+                    <div class="message-info span1">
+                        <span class="month">{{ task.createdAt.format('F') }}</span>
+                        <span class="daynumber">{{ task.createdAt.format('d') }}</span>
+                        <span class="date">{{ task.createdAt.format('l') }}</span>
+                    </div>
+                    <div class="span11">
+                    <a class="message-title" href="{{ path('app_task_view', { id: task.id }) }}">
+                        {{ task.title }}
+                    </a>
+                    <p>{{ task.text }}</p>
+                    <p class="reportedby">{{ task.author.username }}, {{ task.createdAt.format('m/d/y h:i a') }}</p>
+
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

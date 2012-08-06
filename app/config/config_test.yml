@@ -12,3 +12,16 @@ web_profiler:
 
 swiftmailer:
     disable_delivery: true
+
+security:
+  encoders:
+      Symfony\Component\Security\Core\User\User: plaintext
+
+  firewalls:
+      main:
+          http_basic: true
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        dbname:   %database_name%_test
